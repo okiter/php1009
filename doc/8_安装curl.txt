@@ -1,11 +1,11 @@
 安装curl软件
-1.wget http://curl.haxx.se/download/curl-7.44.0.tar.gz
+1.wget http://curl.haxx.se/download/curl-7.46.0.tar.gz
 
 安装前:
 先安装openssl ,参考: 开启ssl.txt
 
 2.安装curl
-    tar zxf curl-7.45.0.tar.gz
+    tar zxf curl-7.46.0.tar.gz
     ./configure --prefix=/usr/local/curl --with-ssl
     make &&  make install
 

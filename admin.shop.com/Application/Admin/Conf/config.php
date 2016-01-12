@@ -6,5 +6,7 @@ return array(
         '__JS__'=>WEB_URL.'Public/Admin/js',
         '__IMG__'=>WEB_URL.'Public/Admin/images',
         '__LAYER__'=>WEB_URL.'Public/Admin/layer/layer.js',
+        '__UPLOADIFY__'=>WEB_URL.'Public/Admin/uploadify',
+        '__BRAND__'=>'http://brand-logo.b0.upaiyun.com/', //代表brand_logo空间的域名
     )
 );

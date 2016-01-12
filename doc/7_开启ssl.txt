@@ -36,7 +36,12 @@ mv config0.m4  config.m4
 7. 编译和安装
 make && make install
 
-8. 需要在php.ini中配置
+8. 需要在php.ini中配置,让php启动时加载扩展
+    8.1 需要指定扩展的目录在哪个位置
+    extension_dir = "/usr/local/php/lib/php/extensions/no-debug-zts-20100525/"
+    8.2 需要开启扩展
+    extension=openssl.so
 
 
 9.重启php-fpm服务器, 因为php-fpm使用到php.ini的配置文件
+   service php-fpm restart

@@ -25,3 +25,16 @@ create table ....()  comment '表注解'
             array('status','require','状态不能为空'),
         )
     }
+
+3.  根据表生成表单元素---> 表单元素需要表单的名称,类型, 备选值.
+
+    使用每个字段的注解为生成表单元素提供信息.
+
+    例如:
+    create table supplier(
+         id smallint unsigned primary key auto_increment,
+         name varchar(100) not null default '' comment '供应商名称',
+         sort tinyint unsigned  not null default 20 comment '排序',
+         intro text comment '供应商简介@textarea',
+         status tinyint not null default 1 comment '状态@radio|1=是&0=否'
+    )engine MyISAM default charset utf8 comment '供应商';

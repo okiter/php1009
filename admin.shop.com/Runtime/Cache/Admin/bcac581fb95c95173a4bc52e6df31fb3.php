@@ -33,31 +33,25 @@
         <table cellpadding="3" cellspacing="1">
             <tr>
                 <th>ID <input type="checkbox" class="selectAll"/> </th>
-                <th>供应商名称</th>
-                <th>供应商描述</th>
-                <th>排序</th>
-                <th>是否显示</th>
-                <th>操作</th>
+                <!--使用注解中的名称生成了表头-->
+                                <th>供应商名称</th>
+                                <th>排序</th>
+                                <th>供应商简介</th>
+                                <th>是否显示</th>
+                                <th>操作</th>
             </tr>
             <?php if(is_array($rows)): $i = 0; $__LIST__ = $rows;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$row): $mod = ($i % 2 );++$i;?><tr>
                     <td width="30"><?php echo ($row["id"]); ?><input type="checkbox" name="id[]" class="ids" value="<?php echo ($row["id"]); ?>"/></td>
-                    <td class="first-cell"><?php echo ($row["name"]); ?></td>
-                    <td align="center"><?php echo ($row["intro"]); ?></td>
-                    <td align="center"><?php echo ($row["sort"]); ?></td>
-                    <td align="center"><a class="ajax-get" href="<?php echo U('changeStatus',array('id'=>$row['id'],'status'=>(1-$row['status'])));?>"><img src="http://admin.shop.com/Public/Admin/images/<?php echo ($row["status"]); ?>.gif"/></a></td>
+                    <td class="first-cell"><?php echo ($row["name"]); ?></td><td align="center"><?php echo ($row["sort"]); ?></td><td align="center"><?php echo ($row["intro"]); ?></td><td align="center"><a class="ajax-get" href="<?php echo U('changeStatus',array('id'=>$row['id'],'status'=>(1-$row['status'])));?>"><img src="http://admin.shop.com/Public/Admin/images/<?php echo ($row["status"]); ?>.gif"/></a></td>
                     <td align="center">
                         <a href="<?php echo U('edit',array('id'=>$row['id']));?>" title="编辑">编辑</a> |
                         <a  class="ajax-get" href="<?php echo U('changeStatus',array('id'=>$row['id']));?>" title="移除">移除</a>
                     </td>
                 </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-            <tr>
-                <td align="right" nowrap="true" colspan="6">
-                    <div id="turn-page" class="page">
-                        <?php echo ($pageHtml); ?>
-                    </div>
-                </td>
-            </tr>
         </table>
+        <div id="turn-page" class="page">
+            <?php echo ($pageHtml); ?>
+        </div>
     </div>
 
 

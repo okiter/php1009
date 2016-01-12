@@ -20,46 +20,43 @@
     <div class="main-div">
         <form method="post" action="<?php echo U();?>">
             <table cellspacing="1" cellpadding="3" width="100%">
-                <tr>
+                                <tr>
                     <td class="label">品牌名称</td>
                     <td>
-                        <input type="text" name="name" maxlength="60" value="<?php echo ($name); ?>" />
-                        <span class="require-field">*</span>
+                        <input type='text' name='name' maxlength='60' value='<?php echo ($name); ?>' />                        <span class="require-field">*</span>
                     </td>
                 </tr>
-                <tr>
+                                <tr>
                     <td class="label">品牌网址</td>
                     <td>
-                        <input type="text" name="url" maxlength="60" value="<?php echo ($url); ?>" />
-                        <span class="require-field">*</span>
+                        <input type='text' name='url' maxlength='60' value='<?php echo ($url); ?>' />                        <span class="require-field">*</span>
                     </td>
                 </tr>
-                <tr>
+                                <tr>
                     <td class="label">品牌LOGO</td>
                     <td>
-                        <input type="file" name="logo"/>
-                        <span class="require-field">*</span>
+                        <input type='file' name='logo' maxlength='60'/>                        <span class="require-field">*</span>
                     </td>
                 </tr>
-                <tr>
-                    <td class="label">品牌描述</td>
-                    <td>
-                        <textarea  name="intro" cols="60" rows="4"  ><?php echo ($intro); ?></textarea>
-                    </td>
-                </tr>
-                <tr>
+                                <tr>
                     <td class="label">排序</td>
                     <td>
-                        <input type="text" name="sort" maxlength="40" size="15" value="<?php echo ((isset($sort) && ($sort !== ""))?($sort):20); ?>" />
+                        <input type='text' name='<?php echo ($sort); ?>' maxlength='60' value='<?php echo ((isset($sort) && ($sort !== ""))?($sort):20); ?>' />                        <span class="require-field">*</span>
                     </td>
                 </tr>
-                <tr>
+                                <tr>
+                    <td class="label">品牌简介</td>
+                    <td>
+                        <textarea  name='intro' cols='60' rows='4'  ><?php echo ($intro); ?></textarea>                        <span class="require-field">*</span>
+                    </td>
+                </tr>
+                                <tr>
                     <td class="label">是否显示</td>
                     <td>
-                        <input type="radio" class="status" name="status" value="1"/> 是
-                        <input type="radio" class="status"  name="status" value="0"/> 否
+                        <input type='radio' class='status' name='status' value='1'/> 是<input type='radio' class='status' name='status' value='0'/> 否                        <span class="require-field">*</span>
                     </td>
                 </tr>
+                
                 <tr>
                     <td colspan="2" align="center"><br />
                         <input type="hidden" name="id" value="<?php echo ($id); ?>"/>

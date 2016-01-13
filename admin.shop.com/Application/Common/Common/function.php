@@ -21,3 +21,19 @@ function show_model_error($model)
     $errorMsg .= '</ul>';
     return $errorMsg;
 }
+
+/**
+ * 返回数组中指定的一列
+ * @param $rows     二维数组
+ * @param $field    字段
+ * @return array   一维数组
+ */
+if(!function_exists('array_column')){   //做系统兼容性出来.
+    function array_column($rows,$field){
+        $value =array();
+        foreach($rows as $row){ //循环出每个小数组,并且出去field字段对应的值.
+            $value[] = $row[$field];
+        }
+        return $value;
+    }
+}

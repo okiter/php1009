@@ -64,11 +64,7 @@ class GoodsCategoryModel extends BaseModel
         //>>1.根据自己的id找到自己以及子孙节点的id
         $sql = "select child.id from  goods_category as child,goods_category as parent where  parent.id = {$id}  and child.lft>=parent.lft  and child.rgt<=parent.rgt";
         $rows = $this->query($sql);
-        $id =array();
-        foreach($rows as $row){
-            $id[] = $row['id'];
-        }
-
+        $id  = array_column($rows,'id');
         $data = array('id' => array('in', $id), 'status' => $status);
         if ($status == -1) {
             $data['name'] = array('exp', "concat(name,'_del')");  //update supplier set name = concat(name,'_del'),status = -1    where id in (1,2,3);

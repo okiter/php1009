@@ -80,9 +80,18 @@ class BaseController extends Controller
             $this->error('操作失败!' . show_model_error($this->model));
         } else {
             $this->assign('meta_title', '添加' . $this->meta_title);
+            $this->_edit_view_before();
             $this->display('edit');
         }
     }
+
+    /**
+     * 该方法主要是被子类覆盖, 为编辑页面展示之前准备数据.
+     */
+    protected function _edit_view_before(){
+
+    }
+
 
     /**
      * 根据id进行编辑
@@ -107,6 +116,7 @@ class BaseController extends Controller
             $this->assign($row);
             //>>3.显示edit页面回显数据
             $this->assign('meta_title', '编辑' . $this->meta_title);
+            $this->_edit_view_before();
             $this->display('edit');
         }
     }

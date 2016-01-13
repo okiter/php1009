@@ -73,4 +73,6 @@ class BaseModel extends Model
             $data['name'] = array('exp', "concat(name,'_del')");  //update supplier set name = concat(name,'_del'),status = -1    where id in (1,2,3);
         }
         return parent::save($data);
-    }}
+    }
+
+}

@@ -32,10 +32,7 @@
 配置php.ini
 
 cp /usr/local/src/php-5.4.42/php.ini-development  /usr/local/php/etc/php.ini
-
 vi /usr/local/php5/etc/php.ini
-
-
 修改一行：
 extension_dir= /usr/local/php/lib/php/extensions/no-debug-zts-20100525/
 

@@ -25,9 +25,11 @@
     </form>
 </div>
 </block>
+<block name="list_operater">
 <input type="button" value="删除" class="button ajax-post" url="{:U('changeStatus')}"/>
 <input type="button" value="显示" class="button ajax-post" url="{:U('changeStatus',array('status'=>1))}"/>
 <input type="button" value="隐藏" class="button ajax-post" url="{:U('changeStatus',array('status'=>0))}"/>
+</block>
 <block name="list"><!--为每个页面的列表留一个位置--></block>
 
 <div id="footer">

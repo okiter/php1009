@@ -73,7 +73,7 @@ class BaseController extends Controller
             if ($this->model->create() !== false) {
                 //>>3.请求数据添加到数据库中
                 if ($this->model->add() !== false) {
-                    $this->success('添加成功!', U('index'));
+                    $this->success('添加成功!', cookie('__forward__'));
                     return;//防止下面的代码继续执行.
                 }
             }

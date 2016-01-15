@@ -49,9 +49,9 @@ class BaseModel extends Model
     /**
      * 查询出状态大于-1
      */
-    public function getList()
+    public function getList($field = "*")
     {
-        return $this->where(array('status' => array('gt', -1)))->select();
+        return $this->field($field)->where(array('status' => array('gt', -1)))->select();
     }
 
     /**

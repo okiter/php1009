@@ -37,3 +37,29 @@ if(!function_exists('array_column')){   //做系统兼容性出来.
         return $value;
     }
 }
+
+
+/**
+ * 根据传入进来的参数生成下拉框的html
+ * @param $name    下拉框的name的值
+ * @param $rows    下拉框中的数据
+ * @param string $defaultValue   默认值, 根据默认值可以选中其中的一个选项
+ * @param string $valueField        使用该数据中该字段作为value的值
+ * @param string $textField        使用该数据中该字段作为text的值
+ */
+function arr2select($name,$rows,$defaultValue='',$valueField='id',$textField='name'){
+    $select_html = "<select class='{$name}' name='{$name}'>";
+    $select_html .= "<option value=''>--请选择--</option>";
+    foreach($rows as $row){
+
+        //根据默认值选中一个选项
+        $selected = '';
+        if($row[$valueField]==$defaultValue){
+            $selected = 'selected';
+        }
+
+        $select_html .= "<option value='{$row[$valueField]}' {$selected}>{$row[$textField]}</option>";
+    }
+    $select_html .= '</select>';
+    echo $select_html;
+}

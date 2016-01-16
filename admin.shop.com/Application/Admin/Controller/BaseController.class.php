@@ -15,6 +15,9 @@ class BaseController extends Controller
 {
     protected $model;
 
+    //是否使用post中所有数据?
+    protected $usePostParams  = false;
+
     public function _initialize()
     {
         $this->model = D(CONTROLLER_NAME);
@@ -72,7 +75,7 @@ class BaseController extends Controller
             //>>2.使用模型中的create方法进行收集数据并且验证
             if ($this->model->create() !== false) {
                 //>>3.请求数据添加到数据库中
-                if ($this->model->add() !== false) {
+                if ($this->model->add($this->usePostParams?I('post.'):'') !== false) {
                     $this->success('添加成功!', cookie('__forward__'));
                     return;//防止下面的代码继续执行.
                 }
@@ -103,7 +106,7 @@ class BaseController extends Controller
             //>>1.使用模型中的create来接收请求参数
             if ($this->model->create() !== false) {
                 //>>2.将请求参数修改到数据库中
-                if ($this->model->save() !== false) {
+                if ($this->model->save($this->usePostParams?I('post.'):'') !== false) {
                     $this->success('修改成功!', cookie('__forward__'));
                     return;
                 }

@@ -17,6 +17,10 @@ class UploadController extends Controller
     public function index(){
         $dir = I('post.dir');  //获取浏览器指定的服务(空间)
         $config = C('UPLOAD_CONFIG');
+
+        //在配置中添加 空间
+        $config['driverConfig']['bucket'] = $dir;
+
         $uploader = new Upload($config);
         $result = $uploader->uploadOne($_FILES['Filedata']);
         if($result!==false){

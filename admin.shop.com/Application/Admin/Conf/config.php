@@ -10,6 +10,8 @@ return array(
         '__TREEGRID__'=>WEB_URL.'Public/Admin/treegrid',
         '__ZTREE__'=>WEB_URL.'Public/Admin/zTree',
         '__BRAND__'=>'http://brand-logo.b0.upaiyun.com/', //代表brand_logo空间的域名
+        '__GOODS__'=>'http://itsource-goods.b0.upaiyun.com/', //代表brand_logo空间的域名
+        '__UEDITOR__'=>WEB_URL.'Public/Admin/ueditor',
     ),
     'UPLOAD_CONFIG'=>array(
         //'rootPath'     => './Uploads/', //保存根路径
@@ -20,7 +22,6 @@ return array(
             'host'     => 'v0.api.upyun.com', //又拍云服务器
             'username' => 'itsource', //又拍操作员用户
             'password' => 'itsource', //又拍云操作员密码
-            'bucket'   => $dir, //空间名称
             'timeout'  => 90, //超时时间
         ) // 上传驱动配置
     )

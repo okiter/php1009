@@ -39,6 +39,11 @@ class BaseController extends Controller
         if (!empty($keyword)) {
             $wheres['name'] = array("like", "{$keyword}%");
         }
+
+        //为wheres中准备查询条件
+        $this->_setWheres($wheres);
+
+
         $pageResult = $this->model->getPageResult($wheres);
         //>>3.将数据分配到页面上
         $this->assign($pageResult);
@@ -46,8 +51,24 @@ class BaseController extends Controller
         //>>将当前url地址保存到cookie中
         cookie('__forward__', $_SERVER['REQUEST_URI']);
         $this->assign('meta_title',$this->meta_title);
+        //在index.html展示之前要执行的代码
+        $this->_index_view_before();
         //>>4.选择视图页面
         $this->display('index');
+    }
+
+    /**
+     * 主要是被覆盖, 为列表中指定查询条件
+     * @param $wheres
+     */
+    protected function _setWheres(&$wheres){
+
+    }
+
+
+    //主要是被子类覆盖. 为index.html展示之前提供数据
+    protected function _index_view_before(){
+
     }
 
 

@@ -72,4 +72,16 @@ class GoodsCategoryModel extends BaseModel
         return parent::save($data);
     }
 
+    /**
+     * 根据一个商品分类得到叶子节点的id
+     * @param $goods_category_id
+     */
+    public function getLeaf($goods_category_id){
+        $sql = "select child.id from goods_category as  parent,goods_category as child where  parent.id = {$goods_category_id} and child.lft>=parent.lft and child.rgt<=parent.rgt and child.lft+1 =child.rgt";
+        $rows = $this->query($sql);
+        //从二维数组中得到id的值
+        $ids = array_column($rows,'id');
+        return $ids;
+    }
+
 }

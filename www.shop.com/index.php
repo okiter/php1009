@@ -15,7 +15,7 @@ define('RUNTIME_PATH',ROOT_PATH.'Runtime/');
 //>>6.设置调试模式
 define('APP_DEBUG',true);
 //>>7.绑定指定的一个模块
-//define('BIND_MODULE','Admin');
+define('BIND_MODULE','Home');
 //>>8.加载框架的入口文件
 require THINK_PATH.'ThinkPHP.php';
 //加载了框架代码之后不要在后面写其他的代码

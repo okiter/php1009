@@ -44,9 +44,20 @@ class BaseModel extends Model
             $page->firstRow = $totalRows - $page->listRows;  //起始条数= 总条数-每页多少条
         }
         $this->alias('obj');
+        //主要是用来连表查询
         $this->_setModel();
-        $row = $this->where($wheres)->limit($page->firstRow, $page->listRows)->select();
-        return array('rows' => $row, 'pageHtml' => $pageHtml);
+        $rows = $this->where($wheres)->limit($page->firstRow, $page->listRows)->select();
+        //对rows中的数据进一步处理
+        $this->_handleRows($rows);
+        return array('rows' => $rows, 'pageHtml' => $pageHtml);
+    }
+
+    /**
+     * 该方法主要是被子类覆盖. 修改rows中的内容
+     * @param $rows
+     */
+    protected function _handleRows(&$rows){
+
     }
 
     /**

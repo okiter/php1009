@@ -25,7 +25,7 @@ class UploadController extends Controller
         $result = $uploader->uploadOne($_FILES['Filedata']);
         if($result!==false){
             //将上传后的路径发送给浏览器
-            echo $result['savepath'].$result['savename']; //保存到upyun上的地址
+           exit($result['savepath'].$result['savename']); //保存到upyun上的地址
         }else{
             echo $uploader->getError();
         }

@@ -9,4 +9,8 @@ return array(
     'DB_PREFIX'              => '', // 数据库表前缀
     'DB_PARAMS'              => array(), // 数据库连接参数
     'DB_DEBUG'               => true, // 数据库调试模式 开启后可以记录SQL日志
+
+    'DATA_CACHE_TYPE'        => 'Redis',  //指定缓存为Redis
+    'REDIS_HOST'             => '127.0.0.1',   //指定redis的服务器地址
+    'REDIS_PORT'             => 6379           //指定redis的服务器端口
 );

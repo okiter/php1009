@@ -19,7 +19,24 @@ class GoodsCategoryModel extends Model
      * @return mixed
      */
     public function getList(){
-        $rows = $this->field('id,name,parent_id,level')->where(array('status'=>1))->order('lft')->select();
+        //>>1.从缓存中获取
+        $rows  = S('GOODS_CATEGORY');
+        if(empty($rows)){
+            //>>2.如果缓存中没有,就从数据库中查询
+            $rows = $this->field('id,name,parent_id,level')->where(array('status'=>1))->order('lft')->select();
+            //>>3. 放到redis缓存中.. 为了下一次从redis中获取
+            S('GOODS_CATEGORY',$rows);
+        }
+
         return $rows;
+    }
+
+    /**
+     * 根据一个分类的id得到祖父分类(包含自己)
+     * @param $goods_category_id
+     */
+    public function getParents($goods_category_id){
+        $sql = "select  parent.name,parent.id from goods_category as parent,goods_category as child where parent.lft<=child.lft and parent.rgt>=child.rgt  and child.id = {$goods_category_id}  order by parent.lft";
+        return  $this->query($sql);
     }
 }

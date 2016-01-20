@@ -7,5 +7,6 @@ return array(
         '__IMG__'=>WEB_URL.'Public/Home/images',
         '__BRAND__'=>'http://brand-logo.b0.upaiyun.com/', //代表brand_logo空间的域名
         '__GOODS__'=>'http://itsource-goods.b0.upaiyun.com/', //代表brand_logo空间的域名
+        '__UEDITOR__'=>WEB_URL.'Public/Home/ueditor',
     ),
 );

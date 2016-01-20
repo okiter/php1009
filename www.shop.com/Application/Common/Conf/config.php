@@ -12,5 +12,17 @@ return array(
 
     'DATA_CACHE_TYPE'        => 'Redis',  //指定缓存为Redis
     'REDIS_HOST'             => '127.0.0.1',   //指定redis的服务器地址
-    'REDIS_PORT'             => 6379           //指定redis的服务器端口
+    'REDIS_PORT'             => 6379,           //指定redis的服务器端口
+
+    //短信应用的配置
+    'SMS_CONFIG'             =>array(
+        'appkey' => '23268328',
+        'secretKey' => 'a7bd32620043c504d76564c8badcc1ad'
+    ),
+    'MAIL_CONFIG'            =>array(
+        'Host'=>            'smtp.126.com',
+        'Username'=>        'itsource520@126.com',
+        'Password'=>        'qqitsource520',
+        'From'=>            'itsource520@126.com'
+    )
 );

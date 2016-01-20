@@ -42,10 +42,26 @@ class MemberController extends Controller
 
     public  function login(){
         if(IS_POST){
-
+            $memberModel = D('Member');
+            if($memberModel->create()!==false){
+                 $userinfo = $memberModel->login();
+                 if(is_array($userinfo)){
+                     //如果userinfo是一个数组表示用户信息
+                        session('USERINFO',$userinfo);
+                     $this->success('登陆成功!',U('Index/index'));
+                 }else{
+                     $this->error(show_model_error($memberModel));
+                 }
+            }
         }else{
             $this->display('login');
         }
+    }
+
+
+    public function logout(){
+        session('USERINFO',null);
+        $this->success('注销成功!',U('Index/index'));
     }
 
 
@@ -95,5 +111,8 @@ class MemberController extends Controller
             $this->success('激活成功!',U('login'));
         }
     }
+
+
+
 
 }

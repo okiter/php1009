@@ -71,4 +71,34 @@ class MemberModel extends Model
             return false;
         }
     }
+
+
+    public function login(){
+            $username = $this->data['username'];
+            $password = $this->data['password'];
+          //>>1.判断用户名是否存在
+            $row = $this->field('id,username,password,salt,status')->where(array('status'=>array('gt',-1)))->getByUsername($username);
+            if(empty($row)){
+                $this->error = '该用户不存在!';
+                return false;
+            }
+
+            if($row['status']==='0'){
+                $this->error = '该用户未激活或者被锁定';
+                return false;
+            }
+          //>>2.判断密码是否和数据库中的密码一致
+            if($row['password']==md5(md5($password).$row['salt'])){
+                   //密码对比上之后才登陆成功
+
+                   //将登陆成功后的IP和时间更新到数据库表中
+                   parent::save(array('last_login_time'=>NOW_TIME,'last_login_ip'=>ip2long(get_client_ip()),'id'=>$row['id']));
+
+                return $row;
+            }else{
+                $this->error = '密码不正确!';
+                return false;
+            }
+
+    }
 }
